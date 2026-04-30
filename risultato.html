@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Risultato</title>
+</head>
+<body style="font-family: Arial; padding: 50px; max-width: 800px; margin: auto; text-align: center;">
+
+  <h2>La tua proposta d’arredo</h2>
+
+  <p id="summary"></p>
+
+  <div style="background: #f2f2f2; padding: 30px; margin: 30px 0;">
+    <h3>Anteprima AI</h3>
+    <p>Qui apparirà l’immagine generata dalla AI.</p>
+  </div>
+
+  <h3>Prodotti consigliati</h3>
+
+  <ul style="text-align: left;">
+    <li>Divano moderno — 699 €</li>
+    <li>Parete attrezzata — 499 €</li>
+    <li>Tavolino soggiorno — 149 €</li>
+  </ul>
+
+  <h3>Richiedi preventivo</h3>
+
+  <input id="name" placeholder="Nome" style="padding: 10px; width: 90%;"><br><br>
+  <input id="phone" placeholder="Telefono" style="padding: 10px; width: 90%;"><br><br>
+
+  <button onclick="sendWhatsApp()" style="padding: 12px 25px;">
+    Richiedi su WhatsApp
+  </button>
+
+  <script>
+    const room = localStorage.getItem("room");
+    const style = localStorage.getItem("style");
+    const budget = localStorage.getItem("budget");
+    const colors = localStorage.getItem("colors");
+
+    document.getElementById("summary").innerText =
+      "Stanza: " + room + " | Stile: " + style + " | Budget: " + budget + " | Colori: " + colors;
+
+    function sendWhatsApp() {
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+
+      const message =
+        "Ciao, vorrei un preventivo per arredare una stanza.%0A" +
+        "Nome: " + name + "%0A" +
+        "Telefono: " + phone + "%0A" +
+        "Stanza: " + room + "%0A" +
+        "Stile: " + style + "%0A" +
+        "Budget: " + budget + "%0A" +
+        "Colori: " + colors;
+
+      window.open("https://wa.me/390000000000?text=" + message, "_blank");
+    }
+  </script>
+
+</body>
+</html>
