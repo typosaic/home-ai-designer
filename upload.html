@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carica stanza</title>
+</head>
+<body style="font-family: Arial; text-align: center; padding: 50px;">
+
+  <h2>Carica la tua stanza</h2>
+
+  <input type="file" id="imageInput" />
+
+  <br><br>
+
+  <button onclick="goNext()" style="padding: 10px 20px;">
+    Continua
+  </button>
+
+  <script>
+    function goNext() {
+      const file = document.getElementById('imageInput').files[0];
+
+      if (!file) {
+        alert("Carica prima un'immagine");
+        return;
+      }
+
+      // Salviamo temporaneamente (simulazione)
+      localStorage.setItem("imageUploaded", "true");
+
+      window.location.href = "questionario.html";
+    }
+  </script>
+
+</body>
+</html>
