@@ -58,8 +58,8 @@
     const colors = document.getElementById("colors").value;
 
     // QUI INCOLLERAI I TUOI DATI
-    const SUPABASE_URL = "INSERISCI_URL";
-    const SUPABASE_KEY = "INSERISCI_KEY";
+    const SUPABASE_URL = "https://pgttflwnuospwzwgrbrj.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndHRmbHdudW9zcHd6d2dyYnJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1NTA1NTksImV4cCI6MjA5MzEyNjU1OX0.r_I9QlIcoeVezyXYNwsN6xPfmzNce7LG4OxZ9V0C27M";
 
     await fetch(SUPABASE_URL + "/rest/v1/projects", {
       method: "POST",
