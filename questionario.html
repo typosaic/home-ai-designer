@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Questionario</title>
+</head>
+<body style="font-family: Arial; padding: 50px; max-width: 600px; margin: auto;">
+
+  <h2>Dicci come vuoi arredare la stanza</h2>
+
+  <label>Che stanza vuoi arredare?</label><br>
+  <select id="room">
+    <option>Soggiorno</option>
+    <option>Camera da letto</option>
+    <option>Cucina</option>
+  </select>
+
+  <br><br>
+
+  <label>Che stile preferisci?</label><br>
+  <select id="style">
+    <option>Moderno</option>
+    <option>Elegante</option>
+    <option>Economico funzionale</option>
+  </select>
+
+  <br><br>
+
+  <label>Budget indicativo</label><br>
+  <select id="budget">
+    <option>Meno di 1.000 €</option>
+    <option>1.000 - 2.500 €</option>
+    <option>2.500 - 5.000 €</option>
+    <option>Oltre 5.000 €</option>
+  </select>
+
+  <br><br>
+
+  <label>Colori preferiti</label><br>
+  <select id="colors">
+    <option>Chiari</option>
+    <option>Neutri</option>
+    <option>Legno naturale</option>
+    <option>Scuri</option>
+  </select>
+
+  <br><br>
+
+  <button onclick="goResult()" style="padding: 12px 25px;">
+    Genera proposta
+  </button>
+
+  <script>
+    function goResult() {
+      localStorage.setItem("room", document.getElementById("room").value);
+      localStorage.setItem("style", document.getElementById("style").value);
+      localStorage.setItem("budget", document.getElementById("budget").value);
+      localStorage.setItem("colors", document.getElementById("colors").value);
+
+      window.location.href = "risultato.html";
+    }
+  </script>
+
+</body>
+</html>
