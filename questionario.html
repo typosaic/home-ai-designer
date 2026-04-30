@@ -49,16 +49,36 @@
     Genera proposta
   </button>
 
-  <script>
-    function goResult() {
-      localStorage.setItem("room", document.getElementById("room").value);
-      localStorage.setItem("style", document.getElementById("style").value);
-      localStorage.setItem("budget", document.getElementById("budget").value);
-      localStorage.setItem("colors", document.getElementById("colors").value);
+<script>
+  async function goResult() {
 
-      window.location.href = "risultato.html";
-    }
-  </script>
+    const room = document.getElementById("room").value;
+    const style = document.getElementById("style").value;
+    const budget = document.getElementById("budget").value;
+    const colors = document.getElementById("colors").value;
+
+    // QUI INCOLLERAI I TUOI DATI
+    const SUPABASE_URL = "INSERISCI_URL";
+    const SUPABASE_KEY = "INSERISCI_KEY";
+
+    await fetch(SUPABASE_URL + "/rest/v1/projects", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY
+      },
+      body: JSON.stringify({
+        room: room,
+        style: style,
+        budget: budget,
+        colors: colors
+      })
+    });
+
+    window.location.href = "risultato.html";
+  }
+</script>
 
 </body>
 </html>
