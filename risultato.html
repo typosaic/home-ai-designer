@@ -57,14 +57,13 @@ async function generateAIImage() {
 
   const data = await response.json();
 
-  if (!data.data) {
-    alert("Errore AI");
-    return;
-  }
+  if (!data.image) {
+  alert("Errore AI: " + JSON.stringify(data.error));
+  return;
+}
 
-  const aiImage = data.data[0].url;
-
-  document.getElementById("aiImage").src = aiImage;
+document.getElementById("aiImage").src = data.image;
+  
 }
 </script>
   
