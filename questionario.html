@@ -56,6 +56,7 @@ async function goResult() {
   const style = document.getElementById("style").value;
   const budget = document.getElementById("budget").value;
   const colors = document.getElementById("colors").value;
+  const imageUrl = localStorage.getItem("imageUrl");
 
   const SUPABASE_URL = "https://pgttflwnuospwzwgrbrj.supabase.co";
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndHRmbHdudW9zcHd6d2dyYnJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1NTA1NTksImV4cCI6MjA5MzEyNjU1OX0.r_I9QlIcoeVezyXYNwsN6xPfmzNce7LG4OxZ9V0C27M";
@@ -69,11 +70,13 @@ async function goResult() {
         "Authorization": "Bearer " + SUPABASE_KEY,
         "Prefer": "return=representation"
       },
-      body: JSON.stringify({
-        room: room,
-        style: style,
-        budget: budget,
-        colors: colors
+     body: JSON.stringify({
+  room: room,
+  style: style,
+  budget: budget,
+  colors: colors,
+  image_url: imageUrl
+})
       })
     });
 
