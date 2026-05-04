@@ -16,20 +16,45 @@
   </button>
 
   <script>
-    function goNext() {
-      const file = document.getElementById('imageInput').files[0];
+async function goNext() {
 
-      if (!file) {
-        alert("Carica prima un'immagine");
-        return;
-      }
+  const file = document.getElementById('imageInput').files[0];
 
-      // Salviamo temporaneamente (simulazione)
-      localStorage.setItem("imageUploaded", "true");
+  if (!file) {
+    alert("Carica prima un'immagine");
+    return;
+  }
 
-      window.location.href = "questionario.html";
+  const SUPABASE_URL = "https://pgttflwnuospwzwgrbrj.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndHRmbHdudW9zcHd6d2dyYnJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1NTA1NTksImV4cCI6MjA5MzEyNjU1OX0.r_I9QlIcoeVezyXYNwsN6xPfmzNce7LG4OxZ9V0C27M";
+
+  const fileName = Date.now() + "-" + file.name;
+
+  const response = await fetch(
+    SUPABASE_URL + "/storage/v1/object/images/" + fileName,
+    {
+      method: "POST",
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY,
+        "Content-Type": file.type
+      },
+      body: file
     }
-  </script>
+  );
+
+  if (!response.ok) {
+    alert("Errore upload immagine");
+    return;
+  }
+
+  const imageUrl = SUPABASE_URL + "/storage/v1/object/public/images/" + fileName;
+
+  localStorage.setItem("imageUrl", imageUrl);
+
+  window.location.href = "questionario.html";
+}
+</script>
 
 </body>
 </html>
