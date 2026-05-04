@@ -10,9 +10,14 @@
   <p id="summary"></p>
 
   <div style="background: #f2f2f2; padding: 30px; margin: 30px 0;">
-    <h3>Anteprima AI</h3>
-    <p>Qui apparirà l’immagine generata dalla AI.</p>
-  </div>
+  <h3>Foto caricata</h3>
+  <img id="uploadedImage" style="max-width: 100%; border-radius: 12px;">
+</div>
+
+<div style="background: #f8f8f8; padding: 30px; margin: 30px 0;">
+  <h3>Anteprima AI</h3>
+  <p>Qui apparirà l’immagine generata dalla AI.</p>
+</div>
 
   <h3>Prodotti consigliati</h3>
 
@@ -36,6 +41,8 @@
     const style = localStorage.getItem("style");
     const budget = localStorage.getItem("budget");
     const colors = localStorage.getItem("colors");
+    const imageUrl = localStorage.getItem("imageUrl");
+document.getElementById("uploadedImage").src = imageUrl;
 
     document.getElementById("summary").innerText =
       "Stanza: " + room + " | Stile: " + style + " | Budget: " + budget + " | Colori: " + colors;
