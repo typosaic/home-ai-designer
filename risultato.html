@@ -16,6 +16,10 @@
 
 <div style="background: #f8f8f8; padding: 30px; margin: 30px 0;">
   <h3>Anteprima AI</h3>
+  
+  <img id="aiImage" style="max-width:100%; border-radius:12px;">
+<br><br>
+<button onclick="generateAIImage()">Genera AI</button>
   <p>Qui apparirà l’immagine generata dalla AI.</p>
 </div>
 
@@ -36,6 +40,30 @@
     Richiedi su WhatsApp
   </button>
 
+async function generateAIImage() {
+
+  const imageUrl = localStorage.getItem("imageUrl");
+
+  const response = await fetch("https://api.openai.com/v1/images/edits", {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndHRmbHdudW9zcHd6d2dyYnJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1NTA1NTksImV4cCI6MjA5MzEyNjU1OX0.r_I9QlIcoeVezyXYNwsN6xPfmzNce7LG4OxZ9V0C27M"
+    },
+    body: JSON.stringify({
+      model: "gpt-image-1",
+      prompt: "Trasforma questa stanza in un soggiorno moderno, luminoso, con mobili eleganti e colori neutri",
+      image: imageUrl,
+      size: "1024x1024"
+    })
+  });
+
+  const data = await response.json();
+
+  const aiImage = data.data[0].url;
+
+  document.getElementById("aiImage").src = aiImage;
+}
+  
   <script>
     const room = localStorage.getItem("room");
     const style = localStorage.getItem("style");
