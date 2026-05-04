@@ -51,7 +51,7 @@
 
   <script>
     async function goResult() {
-      alert("Il bottone funziona");
+    
 
       const room = document.getElementById("room").value;
       const style = document.getElementById("style").value;
@@ -59,7 +59,7 @@
       const colors = document.getElementById("colors").value;
       const imageUrl = localStorage.getItem("imageUrl");
 
-      alert("Image URL: " + imageUrl);
+   
 
       const SUPABASE_URL = "https://pgttflwnuospwzwgrbrj.supabase.co";
       const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndHRmbHdudW9zcHd6d2dyYnJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1NTA1NTksImV4cCI6MjA5MzEyNjU1OX0.r_I9QlIcoeVezyXYNwsN6xPfmzNce7LG4OxZ9V0C27M";
@@ -88,7 +88,7 @@
         return;
       }
 
-      alert("Salvato!");
+     
       window.location.href = "risultato.html";
     }
   </script>
